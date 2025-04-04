@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchSpark</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-picker-element@1.12.0/dist/emoji-picker.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./stylesheet/styles.css">
+</head>
+<style>
+
+/* Signup Page Styles */
+.signup-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+    padding: 2rem 1rem;
+}
+
+.signup-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 450px;
+}
+
+.signup-title {
+    text-align: center;
+    margin-bottom: 1.875rem;
+    color: #2c3e50;
+    font-size: 1.75rem;
+}
+
+.signup-form {
+    margin-bottom: 1.25rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 0.9375rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.password-strength {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.strength-bar {
+    height: 4px;
+    width: 20px;
+    background-color: #ddd;
+    margin-right: 0.3125rem;
+    border-radius: 2px;
+}
+
+.strength-text {
+    margin-left: 0.625rem;
+    font-size: 0.75rem;
+    color: #7f8c8d;
+}
+
+.signup-btn {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 0.625rem;
+}
+
+.signup-btn:hover {
+    background-color: #2980b9;
+}
+
+.login-redirect {
+    text-align: center;
+    margin: 1.25rem 0;
+    color: #7f8c8d;
+}
+
+.login-redirect a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.login-redirect a:hover {
+    text-decoration: underline;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5625rem 0;
+    color: #7f8c8d;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+    padding: 0 0.9375rem;
+}
+
+.social-logins {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.social-btn i {
+    margin-right: 0.625rem;
+    font-size: 1rem;
+}
+
+.social-btn.google {
+    color: #DB4437;
+    border-color: #DB4437;
+}
+
+.social-btn.facebook {
+    color: #4267B2;
+    border-color: #4267B2;
+}
+
+.social-btn.apple {
+    color: #000000;
+    border-color: #000000;
+}
+
+.social-btn.microsoft {
+    color: #00A1F1;
+    border-color: #00A1F1;
+}
+
+.social-btn:hover {
+    opacity: 0.8;
+}
+</style>
+<body class="min-h-screen flex flex-col">
+    <header class="w-full">
+        <nav class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <div class="logo">
+                    <img src="./images/logo1.png" alt="SchSpark Logo" width="92" height="60">
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <ul class="flex space-x-6">
+                        <li><a href="#" class="hover:text-blue-600 transition">Home</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition">Library</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition">Market Place</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition">Contact Us</a></li>
+                    </ul>
+                    
+                    <div class="flex items-center space-x-4 ml-6">
+                        <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa-solid fa-bell"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    
+                    <div class="auth-buttons flex space-x-3 ml-6">
+                        <a href="#" class="login px-4 py-2">Log In</a>
+                        <a href="signup.html" class="signup px-4 py-2">Sign Up</a>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button class="hamburger text-2xl focus:outline-none">☰</button>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div class="mobile-menu hidden md:hidden">
+                <ul class="flex flex-col space-y-4 py-4">
+                    <li><a href="#" class="block hover:text-blue-600">Home</a></li>
+                    <li><a href="#" class="block hover:text-blue-600">About Us</a></li>
+                    <li><a href="#" class="block hover:text-blue-600">Library</a></li>
+                    <li><a href="#" class="block hover:text-blue-600">Market Place</a></li>
+                    <li><a href="#" class="block hover:text-blue-600">Contact Us</a></li>
+                    <li class="flex space-x-4 pt-4">
+                        <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa-solid fa-bell"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </li>
+                    <li class="flex space-x-3 pt-2">
+                        <a href="login.html" class="login px-4 py-2">Log In</a>
+                        <a href="signup.html" class="signup px-4 py-2">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+ 
+    <main class="main-content signup-page">
+        <div class="signup-card">
+            <h1 class="signup-title">Create Account</h1>
+            
+            <form class="signup-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                    <div class="password-strength">
+                        <span class="strength-bar"></span>
+                        <span class="strength-bar"></span>
+                        <span class="strength-bar"></span>
+                        <span class="strength-text">Custom Password</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="signup-btn">Sign Up</button>
+            </form>
+            
+            <div class="login-redirect">
+                Already have an account? <a href="login.html">Log In</a>
+            </div>
+            
+            <div class="divider">
+                <span>Or Continue with</span>
+            </div>
+            
+            <div class="social-logins">
+                <button type="button" class="social-btn google">
+                    <i class="fab fa-google"></i> Sign Up with Google
+                </button>
+                <button type="button" class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i> Sign Up with Facebook
+                </button>
+                <button type="button" class="social-btn apple">
+                    <i class="fab fa-apple"></i> Sign Up with Apple
+                </button>
+                <button type="button" class="social-btn microsoft">
+                    <i class="fab fa-microsoft"></i> Sign Up with Microsoft
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#FDA146] w-full mt-auto">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Contact Information -->
+                <div class="footer-section">
+                    <div class="img mb-4">
+                        <img src="./images/logo1.png"  alt="SchSpark Logo" width="100" height="100">
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">Contact Us</h4>
+                    <ul class="contact-info space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-envelope mt-1 mr-3"></i>
+                            <a href="mailto:schspark@gmail.com">schspark@gmail.com</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-phone mt-1 mr-3"></i>
+                            <a href="tel:+2341234567890">+234 1234567890</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3"></i>
+                            <span>6 Qwerty Layout, Surulere, Lagos, Nigeria</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Explore Links -->
+                <div class="footer-section">
+                    <h4 class="text-xl font-bold mb-4">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:underline">Home</a></li>
+                        <li><a href="#" class="hover:underline">Courses</a></li>
+                        <li><a href="#" class="hover:underline">Cart</a></li>
+                        <li><a href="#" class="hover:underline">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:underline">Help</a></li>
+                        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:underline">Terms and Conditions</a></li>
+                        <li><a href="#" class="hover:underline">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="mt-8 flex justify-center md:justify-start">
+                <ul class="flex space-x-6">
+                    <li><img src="https://img.icons8.com/?size=48&id=118497&format=png" alt="Facebook" class="w-8 h-8 hover:opacity-80 transition"></li>
+                    <li><img src="https://img.icons8.com/?size=48&id=32323&format=png" alt="Instagram" class="w-8 h-8 hover:opacity-80 transition"></li>
+                    <li><img src="https://img.icons8.com/?size=48&id=13930&format=png" alt="LinkedIn" class="w-8 h-8 hover:opacity-80 transition"></li>
+                    <li><img src="https://img.icons8.com/fluent/40/twitterx--v2.png" alt="Twitter/X" class="w-8 h-8 hover:opacity-80 transition"></li>
+                    <li><img src="https://img.icons8.com/?size=48&id=19318&format=png" alt="YouTube" class="w-8 h-8 hover:opacity-80 transition"></li>
+                </ul>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="mt-8 pt-4 border-t border-gray-700 text-center">
+                <p>&copy; 2025 SchSpark. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="./js/main.js"></script>
+</body>
+</html>

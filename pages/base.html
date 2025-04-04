@@ -6,208 +6,86 @@
     <title>SchSpark</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-picker-element@1.12.0/dist/emoji-picker.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="./stylesheet/styles.css">
 </head>
-<style>
-/* Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #F0F0F0;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Header */
-header {
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Navigation */
-nav a {
-    text-decoration: none;
-    color: #333;
-    transition: color 0.3s;
-}
-
-.mobile-menu {
-    display: none;
-    background: #fff;
-    padding: 0 20px 20px;
-}
-
-.mobile-menu.active {
-    display: block;
-}
-
-/* Authentication Buttons */
-.auth-buttons a {
-    border-radius: 20px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.login {
-    color: #2c3e50;
-    border: 1px solid #00264D;
-}
-
-.login:hover {
-    background-color: #f8f9fa;
-}
-
-.signup {
-    background-color: #00264D;
-    color: white;
-}
-
-.signup:hover {
-    background-color: #1a3a6b;
-}
-
-/* Footer Styles */
-footer {
-    color: #333;
-}
-
-.footer-section h4 {
-    position: relative;
-    padding-bottom: 8px;
-}
-
-.footer-section h4::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 40px;
-    height: 2px;
-    background: #333;
-}
-
-.contact-info a {
-    color: #333;
-    transition: color 0.3s;
-}
-
-.contact-info a:hover {
-    color: #00264D;
-}
-
-.footer-links a {
-    color: #333;
-}
-
-.footer-links a:hover {
-    color: #00264D;
-}
-
-/* Responsive adjustments */
-@media (max-width: 767px) {
-    .auth-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .auth-buttons a {
-        display: block;
-        text-align: center;
-    }
-}
-
-</style>
-
-
-<body class="min-h-screen flex flex-col">
-    <header class="w-full">
-        <nav class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-20">
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-container">
                 <div class="logo">
-                    <img src="./stylesheet/images/logo1.png" alt="SchSpark Logo" width="92" height="60">
+                    <img src="./images/logo1.png" alt="SchSpark Logo" width="92" height="60">
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-6">
-                    <ul class="flex space-x-6">
-                        <li><a href="#" class="hover:text-blue-600 transition">Home</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">About Us</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Library</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Market Place</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Contact Us</a></li>
+                <div class="desktop-nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link">Home</a></li>
+                        <li><a href="#" class="nav-link">About Us</a></li>
+                        <li><a href="#" class="nav-link">Library</a></li>
+                        <li><a href="#" class="nav-link">Market Place</a></li>
+                        <li><a href="#" class="nav-link">Contact Us</a></li>
                     </ul>
                     
-                    <div class="flex items-center space-x-4 ml-6">
-                        <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa-solid fa-bell"></i></a>
-                        <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <div class="nav-icons">
+                        <a href="#" class="icon-link"><i class="fa-solid fa-bell"></i></a>
+                        <a href="#" class="icon-link"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
                     
-                    <div class="auth-buttons flex space-x-3 ml-6">
-                        <a href="#" class="login px-4 py-2">Log In</a>
-                        <a href="#" class="signup px-4 py-2">Sign Up</a>
+                    <div class="auth-buttons">
+                        <a href="#" class="login">Log In</a>
+                        <a href="#" class="signup">Sign Up</a>
                     </div>
                 </div>
                 
-                <div class="md:hidden">
-                    <button class="hamburger text-2xl focus:outline-none">☰</button>
+                <div class="mobile-menu-toggle">
+                    <button class="hamburger">☰</button>
                 </div>
             </div>
             
             <!-- Mobile menu -->
-            <div class="mobile-menu hidden md:hidden">
-                <ul class="flex flex-col space-y-4 py-4">
-                    <li><a href="#" class="block hover:text-blue-600">Home</a></li>
-                    <li><a href="#" class="block hover:text-blue-600">About Us</a></li>
-                    <li><a href="#" class="block hover:text-blue-600">Library</a></li>
-                    <li><a href="#" class="block hover:text-blue-600">Market Place</a></li>
-                    <li><a href="#" class="block hover:text-blue-600">Contact Us</a></li>
-                    <li class="flex space-x-4 pt-4">
-                        <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa-solid fa-bell"></i></a>
-                        <a href="#" class="text-gray-700 hover:text-blue-600"><i class="fa-solid fa-cart-shopping"></i></a>
+            <div class="mobile-menu">
+                <ul class="mobile-nav-list">
+                    <li><a href="#" class="mobile-nav-link">Home</a></li>
+                    <li><a href="#" class="mobile-nav-link">About Us</a></li>
+                    <li><a href="#" class="mobile-nav-link">Library</a></li>
+                    <li><a href="#" class="mobile-nav-link">Market Place</a></li>
+                    <li><a href="#" class="mobile-nav-link">Contact Us</a></li>
+                    <li class="mobile-nav-icons">
+                        <a href="#" class="mobile-icon-link"><i class="fa-solid fa-bell"></i></a>
+                        <a href="#" class="mobile-icon-link"><i class="fa-solid fa-cart-shopping"></i></a>
                     </li>
-                    <li class="flex space-x-3 pt-2">
-                        <a href="login.html" class="login px-4 py-2">Log In</a>
-                        <a href="signup.html" class="signup px-4 py-2">Sign Up</a>
+                    <li class="mobile-auth-buttons">
+                        <a href="login.html" class="mobile-login">Log In</a>
+                        <a href="signup.html" class="mobile-signup">Sign Up</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <main class="main-content container">
         <!-- Your main content here -->
-
-
-
-
-
     </main>
 
-    <footer class="bg-[#FDA146] w-full mt-auto">
-        <div class="container mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer class="footer">
+        <div class="footer-container container">
+            <div class="footer-grid">
                 <!-- Contact Information -->
                 <div class="footer-section">
-                    <div class="img mb-4">
-                        <img src="./stylesheet/images/logo1.png"  alt="SchSpark Logo" width="100" height="100">
+                    <div class="footer-logo">
+                        <img src="./images/logo1.png" alt="SchSpark Logo" width="100" height="100">
                     </div>
-                    <h4 class="text-xl font-bold mb-4">Contact Us</h4>
-                    <ul class="contact-info space-y-3">
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-envelope mt-1 mr-3"></i>
+                    <h4 class="footer-heading">Contact Us</h4>
+                    <ul class="contact-info">
+                        <li class="contact-item">
+                            <i class="fa-solid fa-envelope contact-icon"></i>
                             <a href="mailto:schspark@gmail.com">schspark@gmail.com</a>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-phone mt-1 mr-3"></i>
+                        <li class="contact-item">
+                            <i class="fa-solid fa-phone contact-icon"></i>
                             <a href="tel:+2341234567890">+234 1234567890</a>
                         </li>
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-location-dot mt-1 mr-3"></i>
+                        <li class="contact-item">
+                            <i class="fa-solid fa-location-dot contact-icon"></i>
                             <span>6 Qwerty Layout, Surulere, Lagos, Nigeria</span>
                         </li>
                     </ul>
@@ -215,65 +93,45 @@ footer {
                 
                 <!-- Explore Links -->
                 <div class="footer-section">
-                    <h4 class="text-xl font-bold mb-4">Explore</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="hover:underline">Home</a></li>
-                        <li><a href="#" class="hover:underline">Courses</a></li>
-                        <li><a href="#" class="hover:underline">Cart</a></li>
-                        <li><a href="#" class="hover:underline">Profile</a></li>
+                    <h4 class="footer-heading">Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Home</a></li>
+                        <li><a href="#" class="footer-link">Courses</a></li>
+                        <li><a href="#" class="footer-link">Cart</a></li>
+                        <li><a href="#" class="footer-link">Profile</a></li>
                     </ul>
                 </div>
                 
                 <!-- Quick Links -->
                 <div class="footer-section">
-                    <h4 class="text-xl font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="hover:underline">Help</a></li>
-                        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:underline">Terms and Conditions</a></li>
-                        <li><a href="#" class="hover:underline">FAQs</a></li>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Help</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms and Conditions</a></li>
+                        <li><a href="#" class="footer-link">FAQs</a></li>
                     </ul>
                 </div>
             </div>
             
             <!-- Social Links -->
-            <div class="mt-8 flex justify-center md:justify-start">
-                <ul class="flex space-x-6">
-                    <li><img src="https://img.icons8.com/?size=48&id=118497&format=png" alt="Facebook" class="w-8 h-8 hover:opacity-80 transition"></li>
-                    <li><img src="https://img.icons8.com/?size=48&id=32323&format=png" alt="Instagram" class="w-8 h-8 hover:opacity-80 transition"></li>
-                    <li><img src="https://img.icons8.com/?size=48&id=13930&format=png" alt="LinkedIn" class="w-8 h-8 hover:opacity-80 transition"></li>
-                    <li><img src="https://img.icons8.com/fluent/40/twitterx--v2.png" alt="Twitter/X" class="w-8 h-8 hover:opacity-80 transition"></li>
-                    <li><img src="https://img.icons8.com/?size=48&id=19318&format=png" alt="YouTube" class="w-8 h-8 hover:opacity-80 transition"></li>
+            <div class="social-links">
+                <ul class="social-list">
+                    <li><img src="https://img.icons8.com/?size=48&id=118497&format=png" alt="Facebook" class="social-icon"></li>
+                    <li><img src="https://img.icons8.com/?size=48&id=32323&format=png" alt="Instagram" class="social-icon"></li>
+                    <li><img src="https://img.icons8.com/?size=48&id=13930&format=png" alt="LinkedIn" class="social-icon"></li>
+                    <li><img src="https://img.icons8.com/fluent/40/twitterx--v2.png" alt="Twitter/X" class="social-icon"></li>
+                    <li><img src="https://img.icons8.com/?size=48&id=19318&format=png" alt="YouTube" class="social-icon"></li>
                 </ul>
             </div>
             
             <!-- Copyright -->
-            <div class="mt-8 pt-4 border-t border-gray-700 text-center">
+            <div class="copyright">
                 <p>&copy; 2025 SchSpark. All rights reserved.</p>
             </div>
         </div>
     </footer>
     
-    <script >
-
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector(".hamburger");
-    const mobileMenu = document.querySelector(".mobile-menu");
-
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener("click", function() {
-            mobileMenu.classList.toggle("active");
-            // Toggle hamburger icon between ☰ and ✕
-            if (mobileMenu.classList.contains("active")) {
-                hamburger.innerHTML = "✕";
-            } else {
-                hamburger.innerHTML = "☰";
-            }
-        });
-    } else {
-        console.error("Hamburger menu or mobile menu not found!");
-    }
-});
-    </script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
