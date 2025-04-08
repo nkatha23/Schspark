@@ -19,9 +19,10 @@ class CourseProgress(models.Model):
     course = models.CharField(max_length=255)
     progress = models.CharField(max_length=255)
     last_updated = models.DateField(auto_now=True)
+    progress_percentage = models.IntegerField()
 
 class CourseReview(models.Model):
     rating = models.CharField(max_length=255)
-    feedback = models.CharField(max_length=255)
+    review = models.CharField(max_length=255)
     user = models.CharField(max_length=255)
     course = models.CharField(max_length=255)
