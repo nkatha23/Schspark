@@ -18,7 +18,7 @@ class CourseProgress(models.Model):
     user = models.CharField(max_length=255)
     course = models.CharField(max_length=255)
     progress = models.CharField(max_length=255)
-    lastupdated = models.CharField(max_length=255)
+    last_updated = models.DateField(auto_now=True)
 
 class CourseReview(models.Model):
     rating = models.CharField(max_length=255)
