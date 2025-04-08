@@ -11,4 +11,17 @@ from django.db import models
 
 # # Models to be Built
 # 1. CourseProgress: to track user progress in a course.
+
 # 2. CourseReview: to allow students to rate courses and provide feedback.
+
+class CourseProgress(models.Model):
+    user = models.CharField(max_length=255)
+    course = models.CharField(max_length=255)
+    progress = models.CharField(max_length=255)
+    lastupdated = models.CharField(max_length=255)
+
+class CourseReview(models.Model):
+    rating = models.CharField(max_length=255)
+    feedback = models.CharField(max_length=255)
+    user = models.CharField(max_length=255)
+    course = models.CharField(max_length=255)
