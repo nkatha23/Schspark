@@ -8,8 +8,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = int(os.environ.get("DEBUG", default=0))
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+DEBUG = os.getenv("DEBUG", "False").lower() in ("true", "1", "yes")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(" ")
+
 
 # Application definition
 
@@ -22,7 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions', 
     'django_filters', 
-    'rest_framework',
     'core',
     'courses',
     'rest_framework'
@@ -85,7 +85,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    }
 ]
 
 
