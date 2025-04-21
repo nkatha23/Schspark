@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:sans-serif;
+}
+
+/* default button styling */
+button {
+  border-radius: 5px;
+  width: 100px;
+  height: 38px;
+  background-color: #00264d;
+  color: #f0f0f0;
+  border: none;
+  font-size: 0.8rem;
+}
+
+
+/* nav section */
+
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content: space-around;
+}
+
+.nav-links ul{ 
+  display:flex;
+  gap: 2rem;  
+}
+
+.nav-links ul li{
+  list-style: none;
+  
+}
+
+.nav-links ul li a{
+  text-decoration: none;
+  color: #00264D;
+}
+
+.notification{
+  display:flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.buttons{
+  display: flex;
+  gap: 2.5rem;
+}
+
+.buttons #login{
+  color:#00264D;
+  background-color: #f0f0f0;
+  border: 1px solid gray;
+}
+
+
+/* hero section */
+.hero {
+  background-image: url(../images/main\ backdrop.png);
+  background-size: cover;
+  position: relative;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+.never {
+  width: 55.7%;
+  margin-top: 160px;
+  padding-left: 120px;
+  color: #2f2f2f;
+  font-family: poppins;
+}
+
+.never-h1 h1 {
+  font-size: 2.2rem;
+  font-weight: 700px;
+  width: 80%;
+}
+
+.start {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.start p {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.start-button {
+  border-radius: 5px;
+  width: 130px;
+  height: 40px;
+  margin-top: 30px;
+  background-color: #00264d;
+  color: #f0f0f0;
+  border: none;
+}
+
+/* @media screen and (min-width: 900px) {
+  .hero {
+    display: flex;
+    flex-direction: row;
+  }
+} */
+
+
+/* main section */
+
+main{
+  background-color: #F0F0F0;
+}
+.sub-heading {
+  width: 90%;
+  margin: 20px auto;
+}
+
+h2 {
+  color: #2f2f2f;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* column styling */
+
+.courses {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+#grid {
+  display: flex;
+  gap: 1.6rem;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+#course {
+  background-color: #ffffff;
+  width: 362px;
+  height: 350px;
+  border-radius: 20px;
+}
+
+#course-title {
+   margin: 10px 10px 10px 10px;
+  padding: 0px 15px;
+  width: 94%;
+}
+
+#enroll {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  gap: 12.3rem;
+  color: #2f2f2f;
+  width:100%;
+}
+
+#enroll-button {
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  background-color: #00264d;
+  color: #f0f0f0;
+  border: none;
+  font-size: 1rem;
+}
+
+.testimonial {
+  width: 90%;
+  margin: 20px auto 40px;
+}
+
+.testifiers {
+  display: flex;
+  margin-bottom: 50px;
+  margin-top: 40px;
+  gap: 2rem;
+}
+
+.testimony {
+  background-color: #ffffff;
+  width: 30%;
+  box-shadow: 0px 4px 8px 0 rgba(58, 56, 56, 0.19),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#profile {
+  display: flex;
+  align-items: center;
+}
+
+.lorem {
+  padding-left: 40px;
+  padding-right: 10px;
+  width: 332px;
+}
+
+#star {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.upgrade {
+  width: 90%;
+  margin: 20px auto 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/science\ class.jpeg);
+  background-size: cover;
+  height: 700px;
+  font-weight: 700;
+  background-repeat: no-repeat;
+  filter: brightness(65%);
+}
+
+.upgrade h2 {
+  color:#F0F0F0;
+  font-size: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.community {
+  width: 90%;
+  background-image: url(../images/teachers\ hand.jpeg);
+  background-size: cover;
+  height: 500px;
+  margin: 20px auto 70px;
+  background-repeat: no-repeat;
+  filter: brightness(65%);
+  padding-left: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.community{
+  margin:100px auto 70px;
+}
+
+.community div {
+  width: 550px;
+}
+
+.community div h2 {
+  /* color: #fcfcfc; */
+  font-size: 2.5rem;
+  filter: brightness(5%);
+}
+
+.community button {
+  width: 25%;
+  height: 30%;
+  margin-top: 90px;
+  border-radius: 5px;
+  height: 30px;
+  background-color: #00264d;
+  color: #f0f0f0;
+  border: none;
+  font-size: 1rem;
+}
