@@ -1,12 +1,9 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.utils.text import slugify
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import uuid
-from django.utils import timezone
-
 
 # Create your models here.
 
@@ -39,28 +36,21 @@ class CourseReview(models.Model):
 
 class CourseCategory(models.Model):
     CATEGORY_CHOICES = [
-        ('STEM', 'STEM'),
-        ('Art', 'Art'),
-        ('AI', 'AI'),
+        ('SEIP', 'Special Education and Inclusive Practices'),
+        ('AI', 'Artificial Intelligence'),
+        ('CMSE', 'Classroom Management and Student Engagement'),
     ]
-
-    LEVEL_CHOICES = [
-        ('Beginner', 'Beginner'),
-        ('Intermediate', 'Intermediate'),
-        ('Advanced', 'Advanced'),
-    ]
-
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, unique=True)
     code = models.CharField(max_length=10, choices=CATEGORY_CHOICES, unique=True)
     icon = models.CharField(max_length=50, blank=True, null=True)
-    description = models.TextField(blank=True)
+    description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.name} ({self.code})"
+        return f"{self.get_code_display()} ({self.code})"
 
     class Meta:
         verbose_name_plural = "Course Categories"
@@ -85,7 +75,7 @@ class Course(models.Model):
     description = models.TextField()
     short_description = models.CharField(max_length=160)
     category = models.ForeignKey(CourseCategory, on_delete=models.PROTECT, related_name='courses')
-    teacher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='taught_courses')
+    instructor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='taught_courses')
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default='BEGINNER')
     duration_weeks = models.PositiveIntegerField(default=4)
     weekly_hours = models.PositiveIntegerField(default=2)
@@ -139,7 +129,7 @@ class CourseEnrollment(models.Model):
 
 @receiver(post_save, sender=CourseEnrollment)
 def update_enrollment_count(sender, instance, created, **kwargs):
-    if created:
+    if created or 'is_active' in instance.get_deferred_fields():
         course = instance.course
         course.enrolled_count = course.enrollments.filter(is_active=True).count()
         course.save()
