@@ -1,11 +1,21 @@
-from django.urls import path
 from django.contrib import admin
-from rest_framework import routers
+from django.urls import path, include
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-router = routers.DefaultRouter()
+@api_view(['GET'])
+def api_home(request):
+    return Response({
+        "message": "Welcome to Schspark API",
+        "endpoints": {
+            "courses": "/api/courses/",
+            "categories": "/api/categories/",
+        }
+    })
 
-urlpatterns = router.urls
-
-urlpatterns += [
+urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', api_home, name='api-home'),
+    path('api/courses/', include('courses.urls')),
+    path('api/auth/', include('rest_framework.urls')),  # For browsable API login
 ]
