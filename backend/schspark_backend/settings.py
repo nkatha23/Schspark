@@ -7,10 +7,10 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = os.getenv("DEBUG", "False").lower() in ("true", "1", "yes")
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",")
-
+SECRET_KEY = 'c66d&akw#-6fex03n8i$mf_5oe9u5he9m7o1^f4@!kwbo1#ezu'
+DEBUG = True  # Ensure this is True
+ALLOWED_HOSTS = ['*']  # Allow all hosts (DEV ONLY!)
+CORS_ALLOW_ALL_ORIGINS = True  # Enable CORS for frontend dev
 
 # Application definition
 
@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'reviews',
     'rest_framework_json_api',
     'course_module',
+    'corsheaders',
 
 ]
 
@@ -40,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'schspark_backend.urls'
@@ -124,7 +126,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / 'courses/static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -153,3 +159,4 @@ REST_FRAMEWORK = {
     ),
     'TEST_REQUEST_DEFAULT_FORMAT': 'vnd.api+json'
 }
+

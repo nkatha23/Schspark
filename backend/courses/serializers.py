@@ -5,9 +5,9 @@ class CourseCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseCategory
         fields = ['id', 'name', 'code', 'icon', 'description']
-        read_only_fields = ['id', 'code']
+        # read_only_fields = ['id', 'code']
 
-class CourseListSerializer(serializers.ModelSerializer):
+class CourseSerializer(serializers.ModelSerializer):
     category = CourseCategorySerializer(read_only=True)
     instructor = serializers.StringRelatedField()
     is_enrolled = serializers.SerializerMethodField()
@@ -34,18 +34,18 @@ class CourseListSerializer(serializers.ModelSerializer):
             'percent_filled': int((obj.enrolled_count / obj.capacity) * 100) if obj.capacity > 0 else 0
         }
 
-class CourseDetailSerializer(CourseListSerializer):
+class CourseDetailSerializer(CourseSerializer):
     description = serializers.CharField()
     start_date = serializers.DateField()
     end_date = serializers.DateField()
     
-    class Meta(CourseListSerializer.Meta):
-        fields = CourseListSerializer.Meta.fields + [
+    class Meta(CourseSerializer.Meta):
+        fields = CourseSerializer.Meta.fields + [
             'description', 'start_date', 'end_date', 'status'
         ]
 
 class CourseEnrollmentSerializer(serializers.ModelSerializer):
-    course = CourseListSerializer(read_only=True)
+    course = CourseSerializer(read_only=True)
     student = serializers.StringRelatedField()
     
     class Meta:
