@@ -26,6 +26,9 @@ INSTALLED_APPS = [
     'core',
     'courses',
     'rest_framework',
+    'reviews',
+    'rest_framework_json_api',
+    'course_module',
 
 ]
 
