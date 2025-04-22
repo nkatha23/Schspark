@@ -16,7 +16,7 @@ def api_home(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api_home, name='api-home'),
-    path('courses/', include('courses.urls')),
+    path('api/courses/', include('courses.urls')),
     path('api/auth/', include('rest_framework.urls')),
     path('reviews/', include('reviews.urls')), 
 
