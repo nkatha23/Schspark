@@ -15,6 +15,7 @@ def api_home(request):
         "endpoints": {
             "courses": "/api/courses/",
             "categories": "/api/categories/",
+            "reviews": "/api/reviews/",
         }
     })
 
@@ -38,7 +39,7 @@ urlpatterns = [
     path('api/', api_home, name='api-home'),
     path('api/courses/', include('courses.urls')),
     path('api/auth/', include('rest_framework.urls')),
-    path('reviews/', include('reviews.urls')),
+    path('api/reviews/', include('reviews.urls')),
     path('', home, name='home'),
    path('favicon.ico', RedirectView.as_view(url='/static/courses/img/favicon.ico', permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
