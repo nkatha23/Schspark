@@ -5,20 +5,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 import uuid
 
-# Create your models here.
-
-# 1. Course Progress Tracking:
-#     - Create a model (CourseProgress) to track user progress in a course.
-#     - Implement progress updates when a student completes a lesson or module.
-# 2. Course Rating & Review:
-#     - Set up the CourseReview model for students to rate courses and provide feedback.
-#     - Create endpoints for submitting reviews and fetching ratings for courses.
-
-# # Models to be Built
-# 1. CourseProgress: to track user progress in a course.
-
-# 2. CourseReview: to allow students to rate courses and provide feedback.
-
 class CourseProgress(models.Model):
     user = models.CharField(max_length=255)
     course = models.CharField(max_length=255)
@@ -69,7 +55,7 @@ class Course(models.Model):
         ('ARCHIVED', 'Archived'),
     ]
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
     description = models.TextField()
